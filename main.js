@@ -84,6 +84,45 @@ const sr = ScrollReveal({
 //     reset: true
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("contact-form");
+    const modal = document.getElementById("thank-you-modal");
+    const closeModal = document.getElementById("close-modal");
+  
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+  
+      const formData = new FormData(form);
+  
+      fetch("https://formsubmit.co/ajax/atat6903@gmail.com", {
+        method: "POST",
+        headers: {
+          'Accept': 'application/json'
+        },
+        body: formData
+      })
+        .then(response => {
+          if (response.ok) {
+            modal.style.display = "block";
+            form.reset();
+          } else {
+            alert("There was an error. Please try again.");
+          }
+        })
+        .catch(() => alert("Something went wrong. Please try again later."));
+    });
+  
+    closeModal.addEventListener("click", () => {
+      modal.style.display = "none";
+    });
+  
+    window.addEventListener("click", (event) => {
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    });
+  });
+  
 sr.reveal('.home__data, .about__img, .skills__subtitle, .skills__text',{}); 
 sr.reveal('.home__img, .about__subtitle, .about__text, .skills__img',{delay: 400}); 
 sr.reveal('.home__social-icon',{ interval: 200}); 
