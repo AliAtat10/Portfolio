@@ -38,6 +38,9 @@
 *, ::before, ::after {
   box-sizing: border-box;
 }
+html, body {
+  overflow-x: hidden;
+}
 
 html {
   scroll-behavior: smooth;
@@ -267,8 +270,6 @@ img {
   position: relative;
   right: -110px
 }
-
-
 .image-container img {
   width: 100%;
   height: 100%;
@@ -625,6 +626,41 @@ img {
     column-gap: 2rem;
   }
 }
+@media screen and (max-width: 767px) {
+  .home__content {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .home__data {
+    order: 1;
+    max-width: 100%;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .image-container {
+    order: 2;
+    position: static;
+    margin: 20px 0;
+    width: 200px;
+    height: 200px;
+  }
+
+  .home__data .button {
+    order: 3;
+    margin-top: 10px;
+  }
+
+  .home__social {
+    position: static;
+    order: 4;
+    justify-content: center;
+    margin-top: 20px;
+  }
+}
+
 @media screen and (min-width: 992px) {
   .bd-grid {
     margin-left: auto;
